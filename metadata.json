@@ -1,0 +1,6 @@
+{
+  "name": "Watchers - Project Setup & Feature Management Workspace",
+  "description": "Comprehensive project setup, team collaboration, GitHub repository, and feature traceability platform for Watchers (Philippine Startup Challenge XI) adhering to the Software Project Development Lab Manual.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

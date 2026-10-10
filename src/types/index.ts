@@ -179,6 +179,7 @@ export interface AssessmentItem {
   score: number;
   maxScore: number;
   date: string;
+  dateSubmitted?: string;
   status: 'graded' | 'submitted' | 'pending';
   aiDisclosureStatus?: string;
   followupVerified?: boolean;
@@ -191,11 +192,13 @@ export interface StudentSubmission {
   studentName: string;
   studentEmail: string;
   studentAvatar: string;
+  subjectCode?: string;
   assessmentId: string;
   assessmentTitle: string;
   assessmentType: AssessmentType;
   submittedAt: string;
   workText: string;
+  submissionExcerpt?: string;
   aiToolsDeclared: string[];
   aiDisclosureNote: string;
   followupQuizScore: number;
@@ -244,5 +247,58 @@ export interface PracticeQuizQuestion {
   sampleExpectedAnswer: string;
   rubricHint: string;
   timeLimitSeconds: number;
+}
+
+export type QuestionDifficulty = 'Easy' | 'Medium' | 'Hard';
+
+export interface RAGQuizQuestion {
+  id: string;
+  prompt: string;
+  options: string[];
+  correctAnswerIndex: number;
+  difficulty: QuestionDifficulty;
+  explanation?: string;
+  startedAt?: string;
+  answeredAt?: string;
+  timeSpentSeconds?: number;
+}
+
+export interface TelemetryEvent {
+  id: string;
+  timestamp: string;
+  type: 'tab_switch' | 'fleeting_absence' | 'paste_flood' | 'question_start' | 'question_answer' | 'right_click_attempt';
+  durationSeconds?: number;
+  description: string;
+  riskWeight: number;
+}
+
+export interface QuestionTimingRecord {
+  questionId: string;
+  questionPrompt: string;
+  difficulty: QuestionDifficulty;
+  timeSpentSeconds: number;
+  anomalousSpeed: boolean;
+}
+
+export interface StudentExamTelemetry {
+  id?: string;
+  studentId: string;
+  studentName: string;
+  studentAvatar: string;
+  assessmentId: string;
+  assessmentTitle: string;
+  totalAwaySeconds: number;
+  tabSwitchCount: number;
+  fleetingAbsencesCount: number;
+  pasteFloodDetected: boolean;
+  typingVelocityCpm?: number;
+  riskScore: number;
+  riskTier: 'Clean' | 'Needs Watching';
+  eventsLog: TelemetryEvent[];
+  questionTiming: QuestionTimingRecord[];
+  microDefenseTriggered: boolean;
+  microDefenseQuestion?: string;
+  microDefenseAnswer?: string;
+  microDefenseVerified?: boolean;
 }
 

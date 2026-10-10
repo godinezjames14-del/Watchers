@@ -67,7 +67,7 @@ export const GradeSubmissionModal: React.FC<GradeSubmissionModalProps> = ({
               <span className="font-mono text-[11px] text-slate-500">{submission.submittedAt}</span>
             </div>
             <p className="text-slate-300 leading-relaxed font-serif text-[13px] bg-slate-900/50 p-2.5 rounded border border-slate-800">
-              &ldquo;{submission.submissionExcerpt}&rdquo;
+              &ldquo;{submission.workText || submission.submissionExcerpt || 'Submitted work'}&rdquo;
             </p>
           </div>
 

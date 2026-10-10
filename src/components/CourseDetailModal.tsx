@@ -118,7 +118,7 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
                         {formatTypeLabel(item.type)}
                       </td>
                       <td className="py-3 px-4 text-slate-500 tabular-nums font-mono text-[11px]">
-                        {item.dateSubmitted || 'Pending'}
+                        {item.date || item.dateSubmitted || 'Pending'}
                       </td>
                       <td className="py-3 px-4 text-right font-medium text-slate-200 tabular-nums">
                         {item.score} / {item.maxScore}
